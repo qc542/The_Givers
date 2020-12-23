@@ -1,0 +1,14 @@
+-- Drop table
+
+-- DROP TABLE public.goals;
+
+CREATE TABLE public.goals (
+	goal_id uuid NULL DEFAULT uuid_generate_v4(),
+	org_id uuid NOT NULL,
+	start_time timestamp NOT NULL,
+	end_time timestamp NULL,
+	expected_amount int4 NOT NULL,
+	transaction_ids _uuid NULL,
+	CONSTRAINT goals_goal_id_key UNIQUE (goal_id),
+	CONSTRAINT goals_org_id_fkey FOREIGN KEY (org_id) REFERENCES organizations(org_id)
+);

@@ -1,0 +1,49 @@
+<div class="container-fluid grid-divider d-flex justify-content-center flex-column">
+  {% for listing in charities %}
+
+  <div class="well listings">
+      <a href="#">
+          <div class="media">
+              <h4 class="media-heading">{{listing[1]}}</h4>
+              <div class="d-flex">
+                  <img class="summaryimg" src="{{ url_for('static', filename = ('images/' + listing[4]) ) }}">
+                  <div class="details d-flex flex-column">
+                      <p>{{ listing[2]|safe }}</p>
+
+                      {% for news in listing[3] %}
+                      <div class="{{listing[0]}}_news well well-sm w3-animate-right">
+                          <!-- title -->
+                          <p><b>{{ news[0] }}</b></p>
+                          <!-- description -->
+                          <p>{{ news[1] }}</p>
+                      </div>
+                      {%endfor%}
+                  </div>
+              </div>
+          </div>
+      </a>
+  </div>
+
+  <script>
+    var slide_index_{{listing[0]}} = 0;
+    carousel_{{listing[0]}}();
+
+    function carousel_{{listing[0]}}() {
+      const slides = document.getElementsByClassName("{{listing[0]}}_news");
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+      }
+      if (slide_index_{{listing[0]}} >= slides.length) {
+        slide_index_{{listing[0]}} = 0;
+      } 
+      slides[ slide_index_{{listing[0]}} ].style.display = "block"; 
+      ++slide_index_{{listing[0]}};
+      setTimeout(carousel_{{listing[0]}}, 2000); 
+    }
+  </script>
+
+  {%endfor%}
+
+</div>
+// <br>
+// <br>

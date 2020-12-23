@@ -1,0 +1,14 @@
+-- Drop table
+
+-- DROP TABLE public.organizations;
+
+CREATE TABLE public.organizations (
+	org_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	"name" text NOT NULL,
+	email text NOT NULL,
+	financial_id uuid NULL,
+	CONSTRAINT organizations_email_key UNIQUE (email),
+	CONSTRAINT organizations_name_key UNIQUE (name),
+	CONSTRAINT organizations_org_id_key UNIQUE (org_id),
+	CONSTRAINT organizations_financial_id_fkey FOREIGN KEY (financial_id) REFERENCES financials(financial_id)
+);

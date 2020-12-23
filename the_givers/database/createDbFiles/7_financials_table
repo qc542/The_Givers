@@ -1,0 +1,9 @@
+-- Drop table
+
+-- DROP TABLE public.financials;
+
+CREATE TABLE public.financials (
+	external_id int4 NULL,
+	financial_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	CONSTRAINT financials_financial_id_key UNIQUE (financial_id)
+);

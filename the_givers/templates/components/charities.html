@@ -1,0 +1,40 @@
+  <div class="row listings well" style="background-color: #e9ecef;">
+    <a href="/charity/{{charity['name']}}">
+      <div class="media flex-column ml-3 mr-3 mt-2 mb-3">
+        <div class="media-heading">{{charity['name'].replace("-"," ")}}</div>
+        <div class="d-flex">
+          <!-- Need to align logo with name in the images dir -->
+          <img class="summaryimg" src="{{ url_for('static', filename = ('images/' + charity['imageName']) )}}">
+          <div class="details d-flex flex-column">
+            <p>{{ charity['summary']|safe }}</p>
+  
+            {% for news in charity['news'] %}
+            <div class="{{charity['imageId']}}_news well well-sm w3-animate-right">
+              <!-- title -->
+              <h4>{{ news[0] }}</h4>
+              <!-- description -->
+              <p>{{ news[1] }}</p>
+            </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <script>
+    var slide_index_{{charity['imageId']}} = 0;
+    carousel_{{charity['imageId']}}();
+  
+    function carousel_{{charity['imageId']}}() {
+      const slides = document.getElementsByClassName("{{charity['imageId']}}_news");
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      if (slide_index_{{charity['imageId']}} >= slides.length) {
+        slide_index_{{charity['imageId']}} = 0;
+      }
+      slides[ slide_index_{{charity['imageId']}} ].style.display = "block";
+      ++slide_index_{{charity['imageId']}};
+      setTimeout(carousel_{{charity['imageId']}}, 2000);
+    }  
+  </script>

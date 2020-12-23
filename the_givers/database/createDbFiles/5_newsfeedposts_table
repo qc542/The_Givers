@@ -1,0 +1,15 @@
+-- Drop table
+
+-- DROP TABLE public.newsfeedposts;
+
+CREATE TABLE public.newsfeedposts (
+	post_id uuid NULL DEFAULT uuid_generate_v4(),
+	title text NOT NULL,
+	body text NULL,
+	api_params _json NULL,
+	api_links _text NULL,
+	"time" timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+	org_id uuid NOT NULL,
+	CONSTRAINT newsfeedposts_post_id_key UNIQUE (post_id),
+	CONSTRAINT newsfeedposts_org_id_fkey FOREIGN KEY (org_id) REFERENCES organizations(org_id)
+);

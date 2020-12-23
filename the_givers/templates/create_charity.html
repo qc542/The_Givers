@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/overwrite.css">
+
+    <!-- Fonts from Google -->
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Bungee+Shade|Permanent+Marker" rel="stylesheet">
+
+</head>
+
+<body>
+    {% include "components/navbar.html" %}
+
+    <div class="jumbotron text-center">
+        <h1 id="h1Jumbo"> The Givers </h1>
+        <h3 id="h3Jumbo">Giving to Charities in Need</h3>
+    </div>
+    
+    <!-- Form Module-->
+    <div class="module form-module">
+      <div class="form">
+        <h2>Create Your Charity</h2>
+        <form action="/create/charity" method="post">
+          <input type="text" name="name" placeholder="Charity Name" required>
+          <input type="email" name="email" placeholder="Charity Email" required>
+          <input type="text" name="location" placeholder="Location" required>
+          <label for="category">Category</label>
+          <select class="form-control" name="category" id="category">
+            <option value="animals">Animals</option>
+            <option value="arts_culture">Arts & Culture</option>
+            <option value="community_development">Community Development</option>
+            <option value="education">Education</option>
+            <option value="environment">Environment</option>
+            <option value="civil_rights">Human & Civil Rights</option>
+            <option value="human_services">Human Services</option>
+            <option value="religion">Religion</option>
+            <option value="research">Research & Public Policy</option>
+          </select>
+          <br>
+          <label for="summary">Tell Us About Your Charity</label>
+          <textarea class="form-control" id="summary" name="summary" rows="3"></textarea>
+          <br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  </body>
+</html>

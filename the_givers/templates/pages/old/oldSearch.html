@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Bootstrap StyleSheet -->
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap3.min.css">
+        
+        <!-- Our StyleSheet -->
+        <link rel="stylesheet" type="text/css" href="/static/css/overwrite.css">
+        
+        <!-- Fonts from Google -->
+        <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Bungee+Shade|Permanent+Marker" rel="stylesheet">
+
+        <!-- JQuery & Bootstrap js files -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+
+        <title>The Givers</title>
+    </head>
+
+    <body>
+
+        {% include "navbar.html" %}
+
+        <div class="jumbotron text-center">
+            <h1 id="h1Jumbo"> The Givers </h1>
+            <h3 id="h3Jumbo">Giving to Charities in Need</h3>
+        </div>
+
+        <div class="page-header d-flex justify-content-between align-items-end">
+            <h2 class="featured" style="padding-left: 8%;">Search Results:</h2>
+            <h3 class="featured">Sort by: 
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span id="selection">Location</span><span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Location</a></li>
+                <li><a href="#">Category</a></li>
+                <li><a href="#">Name</a></li>
+              </ul>
+              <script>
+                $(".dropdown-menu li a").click(function(){
+                    $('#selection').text($(this).text());
+                });
+              </script>
+            </h3>
+        </div>
+
+      {% include "charities_list.html" %}
+
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Bootstrap StyleSheet -->
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap3.min.css">
+        
+        <!-- Our StyleSheet -->
+        <link rel="stylesheet" type="text/css" href="/static/css/overwrite.css">
+        
+        <!-- Fonts from Google -->
+        <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Bungee+Shade|Permanent+Marker" rel="stylesheet">
+
+        <!-- JQuery & Bootstrap js files -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        
+        <title>The Givers</title>
+    </head>
+
+    <body>
+
+        {% include "navbar.html" %}
+
+        <div class="jumbotron text-center">
+            <h1 id="h1Jumbo"> The Givers </h1>
+            <h3 id="h3Jumbo">Giving to Charities in Need</h3>
+        </div>
+
+        <div class="page-header">
+          <center>
+                <h2 class="featured">Featured Charities:</h2>
+          </center>
+        </div>
+        
+        {% include "charities_list.html" %}
+          
+          
+        </div>
+      
+
+    </body>
+</html>

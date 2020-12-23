@@ -1,0 +1,54 @@
+<div>
+    <div class="container">
+        <div class="row" style="margin-top: 1.5rem;">
+            <div class="col">
+                <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button id="5" class="dropdown-item" type="button">Health</button>
+                            <button id="7" class="dropdown-item" type="button">Animal Rights</button>
+                            <button id="9" class="dropdown-item" type="button">Humanitarian</button>
+                            <button id="11" class="dropdown-item" type="button">Human Rights</button>
+                            <button id="13" class="dropdown-item" type="button">Food Insecurity</button>
+                        </div>
+                    
+                        {% if session['filters'] %}
+                        {% if session['filters']['category'] %}
+                        <ul class="list-group list-group-horizontal-sm p-1">
+                            <li id="filters" class="list-group-item p-1" style="min-width: 90px;">
+                                    {% for filter in session['filters']['category'] %}
+                                        <span class="badge badge-secondary" >{{filter}}</span>
+                                    {% endfor %}
+                            </li>
+                        </ul>      
+                        {% endif %}
+                        {% endif %}
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+                <div class="input-group mb-3">
+
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</button>
+                      <div class="dropdown-menu">
+                        <button id="2" class="dropdown-item" type="button">New York, NY</button>
+                        <button id="4" class="dropdown-item" type="button">Washington, DC</button>
+                        <button id="6" class="dropdown-item" type="button">London, UK</button>
+                      </div>
+                    
+                      {% if session['filters'] %}
+                      {% if session['filters']['location'] %}
+                      <ul class="list-group list-group-horizontal-sm p-1">
+                        <li id="filters" class="list-group-item p-1" style="min-width: 90px;">
+                                {% for filter in session['filters']['location'] %}
+                                    <span class="badge badge-secondary" >{{filter}}</span>
+                                {% endfor %}
+                        </li>
+                      </ul>
+                     {% endif %}
+                     {% endif %}
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+-- Drop table
+
+-- DROP TABLE public.transactions;
+
+CREATE TABLE public.transactions (
+	transaction_id uuid NULL DEFAULT uuid_generate_v4(),
+	sender_id uuid NOT NULL,
+	receiver_id uuid NOT NULL,
+	amount int4 NOT NULL,
+	"time" timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT transactions_transaction_id_key UNIQUE (transaction_id),
+	CONSTRAINT transactions_receiver_id_fkey FOREIGN KEY (receiver_id) REFERENCES organizations(org_id),
+	CONSTRAINT transactions_sender_id_fkey FOREIGN KEY (sender_id) REFERENCES users(user_id)
+);

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/sidebar.css">
+    <link rel="stylesheet" href="static/css/login.css">
+
+    <!-- Fonts from Google -->
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Bungee+Shade|Permanent+Marker" rel="stylesheet">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Profile</title>
+</head>
+
+<body>
+    {% include "components/navbar.html" %}
+    
+    <div class="container mt-4">
+      <div class="jumbotron pb-4">
+        <h1>Hello, {{ firstName }}!</h1>
+        <p class="lead">Here's an overview of your donation statistics:</p>
+        <hr class="my-4">
+        <div class="graph mb-4" id="yearly">
+            <script>
+                var layout = {
+                  title: {
+                    text:'Yearly Donations',
+                    font: {
+                      family: 'Arial',
+                      size: 20
+                    },
+                    xref: 'paper',
+                    x: 0.05,
+                  },
+                  xaxis: {
+                    title: {
+                      text: 'Year',
+                      font: {
+                        family: 'Arial',
+                        size: 16,
+                        color: '#7f7f7f'
+                      }
+                    },
+                  },
+                  yaxis: {
+                    title: {
+                      text: 'Donation Amount (USD)',
+                      font: {
+                        family: 'Arial',
+                        size: 16,
+                        color: '#7f7f7f'
+                      }
+                    }
+                  }
+                };
+                var data = {{yearly_donations | safe}};
+                Plotly.plot('yearly', data, layout);
+            </script>
+        </div>
+        <div class="graph" id="monthly">
+            <script>
+                var layout2 = {
+                  title: {
+                    text:'Monthly Donations',
+                    font: {
+                      family: 'Arial',
+                      size: 20
+                    },
+                    xref: 'paper',
+                    x: 0.05,
+                  },
+                  xaxis: {
+                    title: {
+                      text: 'Month',
+                      font: {
+                        family: 'Arial',
+                        size: 16,
+                        color: '#7f7f7f'
+                      }
+                    },
+                  },
+                  yaxis: {
+                    title: {
+                      text: 'Donation Amount (USD)',
+                      font: {
+                        family: 'Arial',
+                        size: 16,
+                        color: '#7f7f7f'
+                      }
+                    }
+                  }
+                };
+                var data2 = {{monthly_donations | safe}};
+                Plotly.plot('monthly', data2, layout2);
+            </script>
+        </div>
+        <hr class="my-4">
+          <a class="btn btn-primary btn mr-4" href="#" role="button">Edit Account Information</a>
+          <a class="btn btn-danger btn" href="profile/Red-Cross/analytics" role="button">My Organization</a>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <!-- Sidebar toggle -->
+    <script>
+        jQuery(document).ready(function($) { 
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

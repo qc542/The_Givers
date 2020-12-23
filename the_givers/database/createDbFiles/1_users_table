@@ -1,0 +1,15 @@
+-- Drop table
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users (
+	user_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	"name" text NOT NULL,
+	"password" text NOT NULL,
+	email text NOT NULL,
+	financial_id uuid NULL,
+	managed_org_id _uuid NULL,
+	CONSTRAINT users_email_key UNIQUE (email),
+	CONSTRAINT users_user_id_key UNIQUE (user_id),
+	CONSTRAINT users_financial_id_fkey FOREIGN KEY (financial_id) REFERENCES financials(financial_id)
+);
